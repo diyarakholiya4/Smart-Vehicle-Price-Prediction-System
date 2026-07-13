@@ -19,8 +19,13 @@ bike_df["Engine (in cc)"] = bike_df["Engine (in cc)"].replace("-", pd.NA)
 bike_df["Milage (in KMPL)"] = pd.to_numeric(bike_df["Milage (in KMPL)"])
 bike_df["Engine (in cc)"] = pd.to_numeric(bike_df["Engine (in cc)"])
 
-bike_df["Milage (in KMPL)"].fillna(bike_df["Milage (in KMPL)"].median(), inplace=True)
-bike_df["Engine (in cc)"].fillna(bike_df["Engine (in cc)"].median(), inplace=True)
+bike_df["Milage (in KMPL)"] = bike_df["Milage (in KMPL)"].fillna(
+    bike_df["Milage (in KMPL)"].median()
+)
+
+bike_df["Engine (in cc)"] = bike_df["Engine (in cc)"].fillna(
+    bike_df["Engine (in cc)"].median()
+)
 
 # -------------------- STREAMLIT UI --------------------
 st.set_page_config(layout='wide', page_title='Vehicle System')
